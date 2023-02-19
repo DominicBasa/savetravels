@@ -19,10 +19,10 @@ public class Save {
   private Long id;
 
   @NotNull
-  private String name;
+  private String expense;
 
   @NotNull
-  private String restaurantName;
+  private String vendor;
 
   @NotNull
   private Integer rating;
@@ -44,9 +44,9 @@ public class Save {
   }
 
 
-  public Save(String name, String restaurantName, Integer rating, String notes) {
-    this.name = name;
-    this.restaurantName = restaurantName;
+  public Save(String expense, String vendor, Integer rating, String notes) {
+    this.expense = expense;
+    this.vendor = vendor;
     this.rating = rating;
     this.notes = notes;
 
@@ -62,19 +62,19 @@ public class Save {
   }
 
   public String getName() {
-    return this.name;
+    return this.expense;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setName(String expense) {
+    this.expense = expense;
   }
 
   public String getRestaurantName() {
-    return this.restaurantName;
+    return this.vendor;
   }
 
-  public void setRestaurantName(String restaurantName) {
-    this.restaurantName = restaurantName;
+  public void setRestaurantName(String vendor) {
+    this.vendor = vendor;
   }
 
   public Integer getRating() {

@@ -1,33 +1,41 @@
 package com.example.savetravels.services;
 
-
+import com.example.savetravels.models.Save;
+import com.example.savetravels.repositories.SaveRepository;
 import java.util.List;
-
-import javax.validation.Valid;
-
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.savetravels.models.Save;
-import com.example.savetravels.repositories.SaveRepository;
-
 @Service
 public class SaveService {
-  
-  @Autowired SaveRepository saveRepository;
 
+  @Autowired
+  SaveRepository saveRepository;
+
+  //! CREATE
   public void createSave(Save save) {
     saveRepository.save(save);
   }
 
-  public List<Save> getAllSaves() {
+  //! READ ALL
+  public List<Save> allSaves() {
     return saveRepository.findAll();
   }
 
-  public Save findSave(Long id) {
-    return null;
+  //! READ ONE
+  public Save oneSave(Long id) {
+    Optional<Save> optionalSave = saveRepository.findById(id);
+    return optionalSave.orElse(null);
   }
 
-  public void updateSave(@Valid Save save) {
+  //! UPDATE
+  public void updateSave(Save save) {
+    saveRepository.save(save);
+  }
+
+  //! DELETE
+  public void deleteSave(Save save) {
+    saveRepository.delete(save);
   }
 }

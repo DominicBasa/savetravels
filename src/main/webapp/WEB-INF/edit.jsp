@@ -21,52 +21,30 @@ pageEncoding="UTF-8"%>
 		<!-- change to match your file/naming structure -->
 	</head>
 	<body>
-    <h1>Burger Tracker</h1>
-
-    <table class="table">
-      <thead>
-        <th>Name</th>
-        <th>Restaurant Name</th>
-        <th>Rating</th>
-      </thead>
-        <tbody>
-          <c:forEach var="save" items="${saves}">
-            <tr>
-              <td>${save.name}</td>
-              <td>${save.restaurantName}</td>
-              <td>${save.rating}</td>
-            </tr>
-          </c:forEach>
-        </tbody>
-    </table>
-      
-    <h2>Add a save</h2>
-		<form:form action="/saves" method="post" modelAttribute="save">
-			<div class="form:control">
-				<form:label path="name">name</form:label>
-				<form:errors path="name"></form:errors>
-				<form:input path="name"></form:input>
-			</div>
-
-			<div class="form:control">
-				<form:label path="restaurantName">restaurantName</form:label>
-				<form:errors path="restaurantName"></form:errors>
-				<form:input path="restaurantName"></form:input>
-			</div>
-
-			<div class="form:control">
-				<form:label path="rating">rating</form:label>
-				<form:errors path="rating"></form:errors>
-				<form:input path="rating"></form:input>
-			</div>
-
-			<div class="form:control">
-				<form:label path="notes">notes</form:label>
-				<form:errors path="notes"></form:errors>
-				<form:input path="notes"></form:input>
-			</div>
-      
-      <input type="submit" value="create save">
-		</form:form>
+    <h1>Edit Expense</h1>
+    <form:form action="/expenses/${save.id}" method="post" modelAttribute="save">
+      <input type="hidden" name="_method" value="put">
+      <div class="form-control">
+        <form:label path="expense">Expense Name:</form:label>
+        <form:errors path="expense" class="text-danger"/>
+        <form:input path="expense"></form:input>
+      </div>
+        <div class="form-control">
+          <form:label path="vendor">Vendor:</form:label>
+          <form:errors path="vendor" class="text-danger" />
+          <form:input path="vendor"></form:input>
+        </div>
+        <div class="form-control">
+          <form:label path="amount">Amount:</form:label>
+          <form:errors path="amount" class="text-danger" />
+          <form:input path="amount"></form:input>
+        </div>
+        <div class="form-control">
+          <form:label path="description">Description:</form:label>
+          <form:errors path="description" class="text-danger" />
+          <form:input path="description"></form:input>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+    </form:form>
 	</body>
 </html>
