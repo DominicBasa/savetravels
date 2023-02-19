@@ -1,14 +1,12 @@
 package com.example.savetravels.models;
 
-import java.util.Date;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "saves")
@@ -18,40 +16,33 @@ public class Save {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @NotNull
+  @NotBlank
   private String expense;
 
-  @NotNull
+  @NotBlank
   private String vendor;
 
   @NotNull
-  private Integer rating;
+  private Integer amount;
 
-  @NotNull
-  private String notes;
+  @NotBlank
+  private String description;
 
-  // This will not allow the createdAt column to be updated after creation
-  @Column(updatable = false)
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date createdAt;
+  public Save() {}
 
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date updatedAt;
-
-
-
-  public Save() {
-  }
-
-
-  public Save(String expense, String vendor, Integer rating, String notes) {
+  public Save(
+    Long id,
+    String expense,
+    String vendor,
+    Integer amount,
+    String description
+  ) {
+    this.id = id;
     this.expense = expense;
     this.vendor = vendor;
-    this.rating = rating;
-    this.notes = notes;
-
+    this.amount = amount;
+    this.description = description;
   }
-
 
   public Long getId() {
     return this.id;
@@ -61,53 +52,35 @@ public class Save {
     this.id = id;
   }
 
-  public String getName() {
+  public String getExpense() {
     return this.expense;
   }
 
-  public void setName(String expense) {
+  public void setExpense(String expense) {
     this.expense = expense;
   }
 
-  public String getRestaurantName() {
+  public String getVendor() {
     return this.vendor;
   }
 
-  public void setRestaurantName(String vendor) {
+  public void setVendor(String vendor) {
     this.vendor = vendor;
   }
 
-  public Integer getRating() {
-    return this.rating;
+  public Integer getAmount() {
+    return this.amount;
   }
 
-  public void setRating(Integer rating) {
-    this.rating = rating;
+  public void setAmount(Integer amount) {
+    this.amount = amount;
   }
 
-  public String getNotes() {
-    return this.notes;
+  public String getDescription() {
+    return this.description;
   }
 
-  public void setNotes(String notes) {
-    this.notes = notes;
+  public void setDescription(String description) {
+    this.description = description;
   }
-
-  public Date getCreatedAt() {
-    return this.createdAt;
-  }
-
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public Date getUpdatedAt() {
-    return this.updatedAt;
-  }
-
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-
 }

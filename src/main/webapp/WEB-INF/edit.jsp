@@ -26,25 +26,25 @@ pageEncoding="UTF-8"%>
       <input type="hidden" name="_method" value="put">
       <div class="form-control">
         <form:label path="expense">Expense Name:</form:label>
-        <form:errors path="expense" class="text-danger"/>
+        <form:errors path="expense"/>
         <form:input path="expense"></form:input>
       </div>
         <div class="form-control">
           <form:label path="vendor">Vendor:</form:label>
-          <form:errors path="vendor" class="text-danger" />
+          <form:errors path="vendor"/>
           <form:input path="vendor"></form:input>
         </div>
         <div class="form-control">
           <form:label path="amount">Amount:</form:label>
-          <form:errors path="amount" class="text-danger" />
+          <form:errors path="amount"/>
           <form:input path="amount"></form:input>
         </div>
         <div class="form-control">
           <form:label path="description">Description:</form:label>
-          <form:errors path="description" class="text-danger" />
+          <form:errors path="description"/>
           <form:input path="description"></form:input>
         </div>
-        <button type="submit" class="btn btn-outline-primary">Submit</button>
+        <button type="submit">Submit</button>
     </form:form>
 	</body>
 </html>
